@@ -1,6 +1,6 @@
 interface Field {
   name: string
-  type: 'string' | 'int' | 'bool' | 'timestamp' | 'float' | 'date' | 'time' | 'bigint' | 'uuid'
+  type:FieldType 
   isRequired: boolean
   isUnique: boolean
   isFk: boolean
@@ -12,6 +12,8 @@ interface Field {
     email?: boolean
   }
 }
+
+type FieldType = 'string' | 'int' | 'bool' | 'timestamp' | 'float' | 'date' | 'time' | 'bigint' | 'uuid'
 
 interface Entity {
   name: string
