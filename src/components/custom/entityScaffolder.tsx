@@ -60,8 +60,8 @@ const EntityScaffolder = () => {
     <div className="p-6">
       <div className="space-y-4">
         <div>
-          <Label htmlFor="entityName">Entity Name</Label>
-          <Input
+          <Label className="text-xl my-4" htmlFor="entityName">Entity Name</Label>
+          <Input className="my-2"
             value={entity.name}
             onChange={(e) =>
               setEntity({
@@ -72,8 +72,8 @@ const EntityScaffolder = () => {
           />
         </div>
         <div>
-          <Label htmlFor="entityTableName">Table Name</Label>
-          <Input
+          <Label className="text-xl my-4" htmlFor="entityTableName">Table Name</Label>
+          <Input className="my-2"
             value={entity.tableName}
             onChange={(e) =>
               setEntity({
@@ -85,16 +85,17 @@ const EntityScaffolder = () => {
         </div>
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <Label htmlFor="entityFields">Fields</Label>
-            <Button onClick={addField}>Add Field</Button>
+            <Label className="text-lg" htmlFor="entityFields">Fields</Label>
+            <Button className="text-lg p-6" onClick={addField}>Add Field</Button>
           </div>
 
           <div className="space-y-4">
             {entity.fields.map((field, index) => (
               <div key={index} className="p-4 border rounded-lg space-y-4">
                 <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold">Field {index + 1}</h3>
+                  <h3 className="text-xl font-semibold">Field {index + 1}</h3>
                   <Button
+                    className="text-lg p-5"
                     variant="destructive"
                     size="sm"
                     onClick={() => removeField(index)}
@@ -122,7 +123,7 @@ const EntityScaffolder = () => {
                 setEntity((prev) => ({ ...prev, timeStamps: !!checked }))
               }
             />
-            <Label>Include Timestamps</Label>
+            <Label className="text-lg">Include Timestamps</Label>
           </div>
 
           <div className="flex items-center space-x-2">
@@ -132,7 +133,7 @@ const EntityScaffolder = () => {
                 setEntity((prev) => ({ ...prev, isSoftDelete: !!checked }))
               }
             />
-            <Label>Enable Soft Delete</Label>
+            <Label className="text-lg">Enable Soft Delete</Label>
           </div>
 
           <div className="flex items-center space-x-2">
@@ -142,12 +143,12 @@ const EntityScaffolder = () => {
                 setEntity((prev) => ({ ...prev, audited: !!checked }))
               }
             />
-            <Label>Enable Audit Fields</Label>
+            <Label className="text-lg">Enable Audit Fields</Label>
           </div>
         </div>
 
         <Button
-          className="w-full"
+          className="w-full text-lg p-6"
           onClick={() => {
             setSchema(generateSchema(entity));
           }}
@@ -155,7 +156,7 @@ const EntityScaffolder = () => {
           Generate Schema
         </Button>
         <Button
-          className="w-full"
+          className="w-full text-lg p-6"
           onClick={() => {
             setQueries(generateQueries(entity));
           }}
@@ -163,7 +164,7 @@ const EntityScaffolder = () => {
           Generate Queries
         </Button>
         <Button
-          className="w-full"
+          className="w-full text-lg p-6"
           onClick={() => {
             setDTO(generateDTO(entity));
           }}

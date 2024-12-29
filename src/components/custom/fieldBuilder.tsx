@@ -4,7 +4,6 @@ import { Label } from "../ui/label";
 import { Checkbox } from "../ui/checkbox";
 import {
   DropdownMenu,
-  DropdownMenuItem,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
@@ -32,21 +31,22 @@ const FieldBuilder = ({ field, onFieldChange }: FieldBuilderProps) => {
     });
   };
   return (
-    <div>
+    <div className="p-2">
       <div>
-        <Label htmlFor="fieldName">Field Name</Label>
+        <Label className="text-lg" htmlFor="fieldName">Field Name</Label>
         <Input
+          className="my-4"
           onChange={(e) => onFieldChange({ ...field, name: e.target.value })}
         />
       </div>
       <div>
-        <DropdownMenu>
-          <DropdownMenuTrigger>Field Type</DropdownMenuTrigger>
+        <DropdownMenu >
+          <DropdownMenuTrigger className="my-4 text-lg">Field Type</DropdownMenuTrigger>
           <DropdownMenuRadioGroup
             value={field.type}
             onValueChange={handleTypeChange}
           >
-            <DropdownMenuContent>
+            <DropdownMenuContent >
               <DropdownMenuRadioItem value="string">
                 String
               </DropdownMenuRadioItem>
@@ -71,8 +71,9 @@ const FieldBuilder = ({ field, onFieldChange }: FieldBuilderProps) => {
         </DropdownMenu>
       </div>
       <div>
-        <Label htmlFor="fieldIsRequired">Is field required?</Label>
+        <Label className="text-lg" htmlFor="fieldIsRequired">Is field required?</Label>
         <Checkbox
+          className="ml-2"
           checked={field.isRequired}
           onCheckedChange={(checked) =>
             onFieldChange({ ...field, isRequired: !!checked })
@@ -80,8 +81,9 @@ const FieldBuilder = ({ field, onFieldChange }: FieldBuilderProps) => {
         />
       </div>
       <div>
-        <Label htmlFor="fieldIsFk">Is field a Foreign Key?</Label>
+        <Label className="text-lg" htmlFor="fieldIsFk">Is field a Foreign Key?</Label>
         <Checkbox
+          className="ml-2"
           checked={field.isFk}
           onCheckedChange={(checked) =>
             onFieldChange({ ...field, isFk: !!checked })
@@ -89,8 +91,9 @@ const FieldBuilder = ({ field, onFieldChange }: FieldBuilderProps) => {
         />
       </div>
       <div>
-        <Label htmlFor="fieldIsUnique">Is field unique?</Label>
+        <Label className="text-lg" htmlFor="fieldIsUnique">Is field unique?</Label>
         <Checkbox
+          className="ml-2"
           checked={field.isUnique}
           onCheckedChange={(checked) =>
             onFieldChange({ ...field, isUnique: !!checked })
@@ -98,27 +101,30 @@ const FieldBuilder = ({ field, onFieldChange }: FieldBuilderProps) => {
         />
       </div>
       <div>
-        <Label htmlFor="fieldHasReferences">References (optional)</Label>
+        <Label className="text-lg" htmlFor="fieldHasReferences">References (optional)</Label>
         <Input
+          className="my-4"
           onChange={(e) =>
             onFieldChange({ ...field, references: e.target.value })
           }
         />
       </div>
       <div>
-        <Label htmlFor="fieldHasValidations">
+        <Label className="text-lg" htmlFor="fieldHasValidations">
           Does the field has validations?
         </Label>
         <Checkbox
+          className="ml-2"
           checked={validation}
           onCheckedChange={(checked) => setValidation(!!checked)}
         />
       </div>
       {validation && (
-        <div>
+        <div className="py-4">
           <div>
-            <Label htmlFor="fieldMinLength">Min length</Label>
+            <Label className="text-base" htmlFor="fieldMinLength">Min length</Label>
             <Input
+              className="my-4"
               type="number"
               value={field.validations.min}
               onChange={(e) =>
@@ -127,8 +133,9 @@ const FieldBuilder = ({ field, onFieldChange }: FieldBuilderProps) => {
             />
           </div>
           <div>
-            <Label htmlFor="fieldMaxLength">Max length</Label>
+            <Label className="text-base" htmlFor="fieldMaxLength">Max length</Label>
             <Input
+              className="my-4"
               type="number"
               value={field.validations.max}
               onChange={(e) =>
@@ -140,15 +147,17 @@ const FieldBuilder = ({ field, onFieldChange }: FieldBuilderProps) => {
           {field.type === "string" && (
             <div>
               <div>
-                <Label htmlFor="fieldRegex">Pattern (Regex)</Label>
+                <Label className="text-base" htmlFor="fieldRegex">Pattern (Regex)</Label>
                 <Input
+                  className="my-4"
                   value={field.validations.pattern}
                   onChange={(e) => updateValidation("pattern", e.target.value)}
                 />
               </div>
               <div>
-                <Label htmlFor="fieldIsEmail">Is Field Email?</Label>
+                <Label className="text-base" htmlFor="fieldIsEmail">Is Field Email?</Label>
                 <Checkbox
+                  className="ml-2"
                   checked={field.validations.email}
                   onCheckedChange={(checked) =>
                     updateValidation("email", !!checked)
